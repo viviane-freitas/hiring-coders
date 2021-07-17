@@ -119,8 +119,8 @@ select {
 .basic {
     color: rgb(250, 250, 250);
     font-family: sans-serif, 'Courier New', Courier, monospace;
-    font-weight: lighter;
-    font-size: 24px;
+    font-weight: bold;
+    font-size: 14px;
 }
 
 #instagram-rodape .instafooter { 
