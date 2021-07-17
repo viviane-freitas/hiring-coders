@@ -21,8 +21,17 @@ form.addEventListener('submit', (e) => {
     let userName = document.getElementById('input-name').value;
     let userEmail = document.getElementById('input-email').value;
     let month = document.getElementById('month').value;
-    let newUser = {name: userName, email: userEmail, monthOfBirthday: month};
+    console.log(`Nome: ${userName} | E-mail:  ${userEmail}`);
+    if (userName=='' || userEmail=='') {
+        document.getElementById('not-allowed').innerText = "**Por favor, preencha nome e e-mail.";
+        return;
+    }
+    if (validateEmail(userEmail)==false){
+        document.getElementById('not-allowed').innerText = "**Por favor, use um e-mail válido.";
+        return;
+    }
 
+    let newUser = {name: userName, email: userEmail, monthOfBirthday: month};
     let convertData = JSON.stringify(newUser);
 
     localStorage.setItem(`User ${localUserCount}`, convertData);
@@ -30,6 +39,12 @@ form.addEventListener('submit', (e) => {
     console.log("Novo usuário adicionado.");
     document.getElementById('form').innerText = "Cadastro realizado. Novidades em breve!";
 })
+
+function validateEmail(email) 
+    {
+        var re = /\S+@\S+\.\S+/;
+        return re.test(email);
+    }
 
 /*function createUser() {
     let userName = newNameInput;
